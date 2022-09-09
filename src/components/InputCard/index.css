@@ -1,0 +1,96 @@
+.notes-input-section{
+    width: 45%;
+    box-shadow: 1.5px 1.5px 2px 2px rgb(180, 180, 180);
+    margin-top: 30px;
+    padding: 0 25px;
+    border-radius: 6px;
+    position: relative;
+}
+
+.notes-first-input-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.notes-title-input{
+    width: 100%;
+    padding: 7px 0;
+    font-size: 18px;
+    border: none;
+    outline: none;
+}
+
+.notes-pin-icon-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.notes-pin-icon-container:hover{
+    background: lightgray;
+    border-radius: 50%;
+}
+
+.notes-message-input{
+    width: 95%;
+    padding: 6px 0;
+    font-size: 16px;
+    resize: none;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+}
+
+.notes-last-input-row{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    margin-right: 20px;
+}
+
+.notes-input-option-icon-container{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.notes-input-option-icon-container:hover{
+    background: lightgray;
+    border-radius: 50%;
+}
+
+.notes-last-input-row-close-button{
+    cursor: pointer;
+    padding: 0px 25px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notes-last-input-row-close-button:hover{
+    background: lightgray;
+}
+
+.notes-add-badge-button-container{
+    cursor: pointer;
+    position: absolute;
+    bottom: -15px;
+    right: 0px;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #42b883;
+    border-radius: 50%;
+    color: white;
+}

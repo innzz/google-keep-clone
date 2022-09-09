@@ -1,0 +1,65 @@
+.cards-container{
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.cards-section{
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    flex-wrap: wrap;
+}
+
+.cards-section > .notes-input-section{
+    width: 250px;
+    box-shadow: none;
+    border: 1px solid gray;
+    cursor: pointer;
+    padding-bottom: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.cards-section > .notes-input-section:hover{
+    box-shadow: 1.5px 1.5px 2px 2px rgb(180, 180, 180);
+}
+
+.cards-section  .notes-pin-icon-container{
+    display: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.cards-section > .notes-input-section:hover .notes-pin-icon-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.cards-section  .notes-input-option-icon-container{
+    position: absolute;
+    bottom: 0;
+    display: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.cards-section > .notes-input-section:hover .notes-input-option-icon-container{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.cards-section .notes-title-input{
+    margin: 0;
+}
+
+/* .cards-section > .notes-pin-icon-container:hover{
+    display: block;
+} */
