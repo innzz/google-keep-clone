@@ -1,15 +1,22 @@
 .cards-container{
-    margin-top: 50px;
+    margin-top: 10px;
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-bottom: 30px;
+    flex-direction: column;
+    align-items: center;
+}
+.cards-container > h1{
+    width: 80%;
+    margin: auto;
 }
 
 .cards-section{
     display: flex;
     justify-content: space-evenly;
     width: 80%;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
 }
 
 .cards-section > .notes-input-section{
@@ -26,7 +33,24 @@
 }
 
 .cards-section  .notes-pin-icon-container{
-    display: none;
+    /* display: none; */
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.cards-section .notes-last-input-row{
+    position: absolute;
+    bottom: -10px;
+    opacity: 0;
+}
+
+.cards-section .notes-input-option-icon-container{
+    transition: all 0.3s ease-in-out;
+    
+}
+
+.cards-section > .notes-input-section:hover .notes-last-input-row{
+    opacity: 1;
     transition: all 0.3s ease-in-out;
 }
 
@@ -34,24 +58,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 1;
     height: 40px;
     width: 40px;
-    cursor: pointer;
-}
-
-.cards-section  .notes-input-option-icon-container{
-    position: absolute;
-    bottom: 0;
-    display: none;
-    transition: all 0.3s ease-in-out;
-}
-
-.cards-section > .notes-input-section:hover .notes-input-option-icon-container{
-    height: 40px;
-    width: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     cursor: pointer;
 }
 
@@ -60,6 +69,6 @@
     margin: 0;
 }
 
-/* .cards-section > .notes-pin-icon-container:hover{
-    display: block;
-} */
+.cards-section .notes-message-input{
+    margin-top: 0;
+}
