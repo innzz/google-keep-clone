@@ -3,18 +3,8 @@ import './index.css';
 import Cards from '../../components/Cards';
 import InputCard from '../../components/InputCard';
 
-const Home = () => {
+const Home = ({notes,setNotes}) => {
   const [showNotesInput, setShowNotesInput] = useState(false);
-  const [notes, setNotes] = useState([]);
-    const fetchNotesFunction = async ()=>{
-    let fetchedNotesReq = await fetch('http://localhost:5000/api/getNotes');
-    let fetchedNotesResponse = await fetchedNotesReq?.json();
-    let fetchedNotes = fetchedNotesResponse?.notes;
-    setNotes(fetchedNotes)
-  };
-  useEffect(() => {
-    fetchNotesFunction();
-  }, [])
   
   let normalNotes = [];
   let pinnedNotes = [];
@@ -31,7 +21,7 @@ const Home = () => {
       }
     
   }
-  console.log(notes);
+  // console.log(notes);
   return (
     <div className='home-container'>
       <div className="home-content">

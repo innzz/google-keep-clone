@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import './index.css';
 import {BsPin,BsFillPinFill} from 'react-icons/bs';
 import {MdOutlineArchive,MdAdd,MdDeleteOutline} from 'react-icons/md';
+import { useEffect } from 'react';
+import { useRef } from 'react';
 
 const InputCard = ({showNotesInput,setShowNotesInput,title,message,setNotes,singleNote,noteStatus}) => {
+  const [height, setHeight] = useState(0)
+  const [width, setWidth] = useState(0)
+  const ref = useRef(null);
   const [showEditableCard, setShowEditableCard] = useState(false);
   const [note, setNote] = useState({
     title: '',
@@ -11,16 +16,20 @@ const InputCard = ({showNotesInput,setShowNotesInput,title,message,setNotes,sing
   });
 
   const fetchNotesFunction = async ()=>{
-    let fetchedNotesReq = await fetch('http://localhost:5000/api/getNotes');
+    let fetchedNotesReq = await fetch(`${process.env.REACT_APP_BASE_URL}/api/getNotes`);
     let fetchedNotesResponse = await fetchedNotesReq.json();
     let fetchedNotes = fetchedNotesResponse?.notes;
+    // let notesToShow = [];
+    // for (let i = pageCount; i < pageCount+6; i++) {
+    //   notesToShow.push(fetchedNotes[i]);
+    // }
+    // setNotes(notesToShow)
     setNotes(fetchedNotes)
     // return fetchedNotes
   }
 
   const deleteNotesFunction = async (noteItem)=>{
-    console.log("func called")
-    let fetchedNotesReq = await fetch('http://localhost:5000/api/deleteNotes',
+    let fetchedNotesReq = await fetch(`${process.env.REACT_APP_BASE_URL}/api/deleteNotes`,
     {
       method: 'DELETE', // or 'PUT'
       headers: {
@@ -40,7 +49,7 @@ const InputCard = ({showNotesInput,setShowNotesInput,title,message,setNotes,sing
     noteItem = {...noteItem, status: status};
     // console.log(noteItem)
 
-    let fetchedNotesReq = await fetch('http://localhost:5000/api/updateNotesStatus',
+    let fetchedNotesReq = await fetch(`${process.env.REACT_APP_BASE_URL}/api/updateNotesStatus`,
     {
       method: 'POST', // or 'PUT'
       headers: {
@@ -57,7 +66,6 @@ const InputCard = ({showNotesInput,setShowNotesInput,title,message,setNotes,sing
 
   //This function will set the value of inpits in a note variable
   const handleInputs = (e)=>{
-    console.log("func called")
     if (e.target.name === 'title') {
       setNote({...note, title: e.target.value})
     }
@@ -71,7 +79,7 @@ const InputCard = ({showNotesInput,setShowNotesInput,title,message,setNotes,sing
   //This function will add note to the data base
   const addNote = async(noteItem)=>{
     let data = noteItem
-    const noteReq = await fetch('http://localhost:5000/api/addNotes', {
+    const noteReq = await fetch(`${process.env.REACT_APP_BASE_URL}/api/addNotes`, {
       method: 'POST', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
@@ -91,8 +99,7 @@ const InputCard = ({showNotesInput,setShowNotesInput,title,message,setNotes,sing
   const updateNote = async(noteItem,prevNote)=>{
     // console.log("function called", noteItem);
     prevNote = {...prevNote,title: noteItem.title,message: noteItem.message, status: "latest updates"}
-    console.log(prevNote);
-    const noteReq = await fetch('http://localhost:5000/api/updateNotes', {
+    const noteReq = await fetch(`${process.env.REACT_APP_BASE_URL}/api/updateNotes`, {
       method: 'POST', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
@@ -108,9 +115,22 @@ const InputCard = ({showNotesInput,setShowNotesInput,title,message,setNotes,sing
       })
     }
     }
+
+    //This will calculate height of an element
+    useEffect(() => {
+      setHeight(ref.current.clientHeight)
+      setWidth(ref.current.clientWidth)
+    },[]);
+
+    useEffect(() => {
+      setWidth(width+300)
+    },[ref]);
+
+    console.log(height)
+    console.log("width",width)
     
     // console.log(notes);
-    console.log(showEditableCard)
+    // console.log(showEditableCard)
 
   return (
     <>
@@ -137,7 +157,8 @@ const InputCard = ({showNotesInput,setShowNotesInput,title,message,setNotes,sing
       </div>
     :
     // Normal card
-    <div className={"notes-input-section"}>
+    // <div ref={ref} className={"notes-input-section"} onChange={()=>{setWidth(width+300); console.log("func called")}} style={{transform: `translate(${width+300}px,0px)`}}>
+    <div ref={ref} className={"notes-input-section"} >
     {/* }}} onClick={()=>setShowEditableCard(true)}> */}
     {showNotesInput === true ? <div className="notes-first-input-row">
       <input className='notes-title-input' name="title" value={note.title} onChange={handleInputs} type="text" placeholder='Title' rel="noreferrer" />
