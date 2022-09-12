@@ -31,17 +31,13 @@
 }
 
 .notes-input-section-editable-container .notes-last-input-row-close-button{
-    z-index: 25;
-    position: absolute;
-    right: 400px;
-    top: 230px;
-    background: lightgray;
     cursor: pointer;
-    padding: 5px 25px;
+    padding: 0px 25px;
     border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease-in-out;
 }
 
 /* ------------------------------------------------------------- */

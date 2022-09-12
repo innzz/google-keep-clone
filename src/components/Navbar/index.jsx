@@ -8,21 +8,23 @@ import {MdRefresh} from 'react-icons/md';
 import icon from '../../assets/images/icon.png';
 import Sidebar from '../Sidebar';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const Navbar = () => {
+  // const [searchHover, setSearchHover] = useState(false);
+  // console.log(searchValue)
   return (
     <div className='navbar-container'>
       <Row className='navbar-container-row'>
         <Col className='navbar-container-col'>
-          {/* <FiMenu className='menu-icon' size={22}/> */}
           <span className='nav-icon-container'><Link to="/"><img className='nav-icon' src={icon} alt="NotesIcon" rel="noreferrer"></img></Link></span>
           <Link to="/"><h1 style={{cursor: "pointer"}} className='nav-notes-text'>Notes</h1></Link>
         </Col>
         <Col className='navbar-container-col'>
-          <div className="nav-search-container">
+          {/* <div className={searchHover ? "nav-search-container-hover" : "nav-search-container"} >
             <HiOutlineSearch className='search-nav-icon' size={25} />
-            <input placeholder='Search' className='search-nav-input' ></input>
-          </div>
+            <input placeholder='Search' onClick={()=>setSearchHover(true)} onBlur={()=>setSearchHover(false)} onChange={(e)=>setSearchValue(e.target.value)} className='search-nav-input' value={searchValue} ></input>
+          </div> */}
         </Col>
         <Col className='navbar-container-col'>
           <MdRefresh className='refresh-nav-icon' size={25} />

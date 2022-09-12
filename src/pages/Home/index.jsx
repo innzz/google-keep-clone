@@ -5,6 +5,17 @@ import InputCard from '../../components/InputCard';
 
 const Home = ({notes,setNotes}) => {
   const [showNotesInput, setShowNotesInput] = useState(false);
+
+  const fetchNotesFunction = async ()=>{
+    let fetchedNotesReq = await fetch(`${process.env.REACT_APP_BASE_URL}/api/getNotes`);
+    let fetchedNotesResponse = await fetchedNotesReq?.json();
+    let fetchedNotes = fetchedNotesResponse?.notes;
+    setNotes(fetchedNotes)
+  };
+  
+  useEffect(() => {
+    fetchNotesFunction();
+  }, [])
   
   let normalNotes = [];
   let pinnedNotes = [];
