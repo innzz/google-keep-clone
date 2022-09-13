@@ -9,6 +9,7 @@ import { useState } from 'react';
 
 function App(){
   const [notes, setNotes] = useState([]);
+  
 
   const fetchNotesFunction = async ()=>{
   let fetchedNotesReq = await fetch(`${process.env.REACT_APP_BASE_URL}/api/getNotes`);
