@@ -5,7 +5,7 @@ import {MdOutlineArchive,MdOutlineRestore,MdAdd,MdDeleteOutline} from 'react-ico
 import {IoMdArchive} from 'react-icons/io';
 import { toast } from 'react-toastify';
 
-const InputCard = ({showNotesInput,setShowNotesInput,title,message,setNotes,singleNote,noteStatus,trashNotesSate,setTrashNotes}) => {
+const InputCard = ({showNotesInput,setShowNotesInput,title,message,setNotes,singleNote,noteStatus,trashNotesSate,setTrashNotes,changeLayout}) => {
   const [showEditableCard, setShowEditableCard] = useState(false);
   const [note, setNote] = useState({
     title: '',
@@ -273,7 +273,7 @@ const InputCard = ({showNotesInput,setShowNotesInput,title,message,setNotes,sing
     :
 
     // Normal card
-    <div className={"notes-input-section"} >
+    <div className={"notes-input-section"} style={{width: changeLayout === 'flex' ? "100%" : ''}} >
     {showNotesInput === true ? <div className="notes-first-input-row">
       <input className='notes-title-input' name="title" value={note.title} onChange={handleInputs} type="text" placeholder='Title' rel="noreferrer" />
       <span className='notes-pin-icon-container'>{note.status === "pinned" ? <BsFillPinFill onClick={()=>setNote({...note,status: "normal"})} className='notes-pin-icon' size={25}  /> : <BsPin onClick={()=>setNote({...note,status: "pinned"})} className='notes-pin-icon' size={25} />}</span>

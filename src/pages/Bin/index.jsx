@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Cards from '../../components/Cards'
 
-const Bin = () => {
+const Bin = ({changeLayout}) => {
   const [trashNotes, setTrashNotes] = useState([]);
   const [trashNotesSate, setTrashNotesState] = useState(true);
   
@@ -20,7 +20,7 @@ const Bin = () => {
   return (
     <div className='bin-container'>
     <div className="bin-content">
-        <Cards notes={trashNotes} notesHeading={'trash:'} trashNotesSate={trashNotesSate} setTrashNotes={setTrashNotes} />
+        <Cards notes={trashNotes} notesHeading={'trash:'} trashNotesSate={trashNotesSate} setTrashNotes={setTrashNotes} changeLayout={changeLayout} />
     </div>
   </div>
   )

@@ -9,6 +9,7 @@ import { useState } from 'react';
 
 function App(){
   const [notes, setNotes] = useState([]);
+  const [changeLayout, setChangeLayout] = useState("grid");
   
 
   const fetchNotesFunction = async ()=>{
@@ -36,11 +37,11 @@ useEffect(() => {
       draggable
       pauseOnHover
       />
-        <Navbar  />
+        <Navbar changeLayout={changeLayout} setChangeLayout={setChangeLayout} />
       <Routes>
-        <Route exact path="/" element={<Home notes={notes} setNotes={setNotes} />} />
-        <Route exact path="/bin" element={<Bin />} />
-        <Route exact path="/archive" element={<Archive notes={notes} setNotes={setNotes} />} />
+        <Route exact path="/" element={<Home notes={notes} setNotes={setNotes} changeLayout={changeLayout} setChangeLayout={setChangeLayout}  />} />
+        <Route exact path="/bin" element={<Bin changeLayout={changeLayout} setChangeLayout={setChangeLayout}  />} />
+        <Route exact path="/archive" element={<Archive notes={notes} setNotes={setNotes} changeLayout={changeLayout} setChangeLayout={setChangeLayout}  />} />
       </Routes>
     </div>
   );

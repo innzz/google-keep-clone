@@ -3,7 +3,7 @@ import './index.css';
 import Cards from '../../components/Cards';
 import InputCard from '../../components/InputCard';
 
-const Home = ({notes,setNotes}) => {
+const Home = ({notes,setNotes,changeLayout}) => {
   const [showNotesInput, setShowNotesInput] = useState(false);
 
   const fetchNotesFunction = async ()=>{
@@ -37,9 +37,9 @@ const Home = ({notes,setNotes}) => {
     <div className='home-container'>
       <div className="home-content">
           <InputCard showNotesInput={showNotesInput} setShowNotesInput={setShowNotesInput} setNotes={setNotes} />
-          <Cards notes={latestNotes} setNotes={setNotes} notesHeading={'latest updates:'} />
-          <Cards notes={pinnedNotes} setNotes={setNotes} notesHeading={'pinned:'} />
-          <Cards notes={normalNotes} setNotes={setNotes} notesHeading={'others:'} />
+          <Cards notes={latestNotes} setNotes={setNotes} notesHeading={'latest updates:'} changeLayout={changeLayout} />
+          <Cards notes={pinnedNotes} setNotes={setNotes} notesHeading={'pinned:'} changeLayout={changeLayout} />
+          <Cards notes={normalNotes} setNotes={setNotes} notesHeading={'others:'} changeLayout={changeLayout} />
       </div>
     </div>
   )
